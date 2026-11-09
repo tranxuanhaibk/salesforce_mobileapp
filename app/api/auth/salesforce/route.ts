@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 import crypto from 'crypto'
 import { getSalesforceEnv } from '@/lib/salesforce/token'
@@ -26,9 +26,11 @@ function base64UrlEncode(buffer: Buffer): string {
  * 4. Redirects the user to `${SALESFORCE_LOGIN_URL}/services/oauth2/authorize`
  *    with scope="api refresh_token offline_access openid".
  */
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    const { clientId, redirectUri, loginUrl } = getSalesforceEnv()
+    const { clientId, redirectUri, loginUrl } = getSalesforceEnv(
+      request.nextUrl.origin
+    )
 
     if (!clientId) {
       return NextResponse.json(

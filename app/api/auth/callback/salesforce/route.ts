@@ -93,7 +93,9 @@ export async function GET(request: NextRequest) {
   cookieStore.delete('sf_oauth_verifier')
 
   // 2. Exchange authorization code for tokens via application/x-www-form-urlencoded
-  const { clientId, clientSecret, redirectUri, loginUrl } = getSalesforceEnv()
+  const { clientId, clientSecret, redirectUri, loginUrl } = getSalesforceEnv(
+    request.nextUrl.origin
+  )
   const tokenEndpoint = `${loginUrl.replace(/\/+$/, '')}/services/oauth2/token`
 
   const tokenParams = new URLSearchParams({

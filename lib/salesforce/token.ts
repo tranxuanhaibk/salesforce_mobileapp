@@ -22,12 +22,24 @@ export interface SalesforceEnvConfig {
   encryptionKey: string
 }
 
-export function getSalesforceEnv(): SalesforceEnvConfig {
+export function getSalesforceEnv(requestOrigin?: string): SalesforceEnvConfig {
   const env = getServerEnv()
+  let redirectUri = env.salesforceRedirectUri
+
+  // If running on a deployed domain (e.g. https://*.vercel.app) but SALESFORCE_REDIRECT_URI
+  // was accidentally left as http://localhost:3000/..., automatically use the request origin.
+  if (
+    requestOrigin &&
+    !requestOrigin.includes('localhost') &&
+    redirectUri.includes('localhost')
+  ) {
+    redirectUri = `${requestOrigin.replace(/\/+$/, '')}/api/auth/callback/salesforce`
+  }
+
   return {
     clientId: env.salesforceClientId,
     clientSecret: env.salesforceClientSecret,
-    redirectUri: env.salesforceRedirectUri,
+    redirectUri,
     loginUrl: env.salesforceLoginUrl,
     encryptionKey: env.tokenEncryptionKey,
   }
