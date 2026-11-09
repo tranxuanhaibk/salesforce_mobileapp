@@ -1,0 +1,14 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/_global-error/page": "/_global-error",
+  "/favicon.ico/route": "/favicon.ico",
+  "/api/auth/salesforce/callback/route": "/api/auth/salesforce/callback",
+  "/api/auth/salesforce/disconnect/route": "/api/auth/salesforce/disconnect",
+  "/api/auth/salesforce/route": "/api/auth/salesforce",
+  "/api/auth/callback/salesforce/route": "/api/auth/callback/salesforce",
+  "/api/salesforce/limits/route": "/api/salesforce/limits",
+  "/api/salesforce/contacts/route": "/api/salesforce/contacts",
+  "/(auth)/login/page": "/login",
+  "/(dashboard)/dashboard/page": "/dashboard",
+  "/page": "/"
+}

@@ -1,0 +1,7 @@
+{
+  "/api/salesforce/contacts/route": "app/api/salesforce/contacts/route.js",
+  "/api/auth/salesforce/route": "app/api/auth/salesforce/route.js",
+  "/api/auth/salesforce/disconnect/route": "app/api/auth/salesforce/disconnect/route.js",
+  "/api/auth/callback/salesforce/route": "app/api/auth/callback/salesforce/route.js",
+  "/page": "app/page.js"
+}

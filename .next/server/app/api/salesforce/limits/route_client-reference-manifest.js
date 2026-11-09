@@ -1,0 +1,1 @@
+globalThis.__RSC_MANIFEST=(globalThis.__RSC_MANIFEST||{});globalThis.__RSC_MANIFEST["/api/salesforce/limits/route"]={"moduleLoading":{"prefix":"/_next/"},"ssrModuleMapping":{},"edgeSSRModuleMapping":{},"clientModules":{},"entryCSSFiles":{"/Users/admin/Documents/Project List/salesforce_mobileapp/app/api/salesforce/limits/route":[]},"rscModuleMapping":{},"edgeRscModuleMapping":{}};

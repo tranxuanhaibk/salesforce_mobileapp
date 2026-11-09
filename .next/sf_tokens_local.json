@@ -1,0 +1,12 @@
+{
+  "005gK000000P8KAQA0": {
+    "id": "b4b3ac14-c4f6-43e7-a07c-f3204a61b73a",
+    "user_id": null,
+    "salesforce_user_id": "005gK000000P8KAQA0",
+    "instance_url": "https://haitran-dev-ed.develop.my.salesforce.com",
+    "access_token": "1a9371aa6fd8d11341cad941:77e1b54fa175615186236b652b9f8b36:00f2fe07876e3aff962d675b34db00a84634b77f57d73fac5a124ed479972bbc788bcd21fb18cb740d78c3b71d914616a15774d418b68a877aeca7f2b787aff5f6d4b39d9a805a517906eca3ce8280bce096ca711e5132ade04de741033689ee5db77076062df0b4d24d51fe99bcbb66",
+    "refresh_token": "80a873b86e44acc32d1c421b:e279f31281c32871dcd38593e44226e3:71561516d41fce4abfa9a9c5f330febee702e08497e8e1808d286c7b63eba4d6fa04152718c07a96654c4de944cf7116ba342c8d693abf8d98a2012c72b11f8c7f4083fff4f92414d815a0f8735a62921c8fbf49d60e98",
+    "issued_at": "2026-11-09T04:09:43.709Z",
+    "updated_at": "2026-11-09T04:09:44.771Z"
+  }
+}
