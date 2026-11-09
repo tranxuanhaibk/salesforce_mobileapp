@@ -1,5 +1,6 @@
 import { cookies } from 'next/headers'
 import fs from 'fs'
+import os from 'os'
 import path from 'path'
 import { createServiceRoleClient, type SfTokenRecord } from '@/lib/supabase/server'
 import { decrypt, encrypt } from '@/lib/crypto'
@@ -8,7 +9,10 @@ import { getPublicEnv, getServerEnv } from '@/lib/env'
 export const SF_SESSION_COOKIE = 'sf_session'
 export const SF_API_VERSION = 'v60.0'
 
-const LOCAL_TOKEN_STORE_PATH = path.join(process.cwd(), '.next', 'sf_tokens_local.json')
+// Use os.tmpdir() (/tmp on Vercel Serverless) instead of .next/ so @vercel/nft
+// never traces the .next/ directory (which causes ENOENT on .next/lock) and
+// so the fallback file is writable on Vercel's read-only lambda filesystem.
+const LOCAL_TOKEN_STORE_PATH = path.join(os.tmpdir(), 'sf_tokens_local.json')
 
 export interface SalesforceEnvConfig {
   clientId: string
