@@ -1,26 +1,132 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ─────────────────────────────────────────────
+   Design Tokens — Salesforce Brand + App Theme
+   ───────────────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Salesforce Brand */
+  --color-sf-blue:        #0176D3;
+  --color-sf-blue-dark:   #014486;
+  --color-sf-blue-light:  #1B96FF;
+  --color-sf-teal:        #06A59A;
+  --color-sf-indigo:      #4C6EF5;
+
+  /* App Surfaces */
+  --color-background:     var(--background);
+  --color-foreground:     var(--foreground);
+  --color-surface:        var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-border:         var(--border);
+  --color-muted:          var(--muted);
+
+  /* Fonts */
+  --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), 'Courier New', monospace;
+
+  /* Animations */
+  --animate-spin-slow: spin 3s linear infinite;
+  --animate-fade-in:   fadeIn 0.4s ease-out forwards;
+  --animate-slide-up:  slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* ─────────────────────────────────────────────
+   CSS Variables — Light Mode
+   ───────────────────────────────────────────── */
+:root {
+  --background:     #f8fafc;
+  --foreground:     #0f172a;
+  --surface:        #ffffff;
+  --surface-raised: #f1f5f9;
+  --border:         #e2e8f0;
+  --muted:          #64748b;
+}
+
+/* ─────────────────────────────────────────────
+   CSS Variables — Dark Mode
+   ───────────────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background:     #0a0f1e;
+    --foreground:     #f1f5f9;
+    --surface:        #111827;
+    --surface-raised: #1e293b;
+    --border:         #1e2d45;
+    --muted:          #94a3b8;
   }
+}
+
+/* ─────────────────────────────────────────────
+   Base Styles
+   ───────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  min-height: 100dvh;
 }
+
+/* ─────────────────────────────────────────────
+   Keyframe Animations
+   ───────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* ─────────────────────────────────────────────
+   Utility Classes
+   ───────────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.sf-gradient {
+  background: linear-gradient(135deg, #0176D3 0%, #014486 50%, #4C6EF5 100%);
+}
+
+.sf-gradient-text {
+  background: linear-gradient(135deg, #1B96FF 0%, #06A59A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--surface-raised) 25%, var(--border) 50%, var(--surface-raised) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+}
+
+/* Native <dialog> modal backdrop styling (per modern-web-guidance) */
+dialog::backdrop {
+  background-color: rgba(10, 15, 30, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
